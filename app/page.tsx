@@ -1,7 +1,31 @@
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+    // Simulate fetching data on the server
+  const res = await fetch('https://jsonplaceholder.typicode.com/todos');
+  const products = await res.json();
+
+  interface Todo {
+    userId: number,
+    id: number;
+    title: string;
+    completed: boolean;
+  }
+
+
   return (
+  <>
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <h1 className="text-4xl font-bold mb-8">Our Products</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {products.map((todo: Todo) => (
+          <div key={todo.id} className="border p-4 rounded-lg shadow-md">
+            <h2 className="text-xl font-semibold mb-2">{todo.title}</h2>
+            <p className="text-gray-700">${todo.completed}</p>
+          </div>
+        ))}
+      </div>
+    </main>
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <Image
@@ -16,7 +40,7 @@ export default function Home() {
           <li className="mb-2 tracking-[-.01em]">
             Get started by editing{" "}
             <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
+              app/page.tsx
             </code>
             .
           </li>
@@ -99,5 +123,6 @@ export default function Home() {
         </a>
       </footer>
     </div>
+  </>
   );
 }
