@@ -1,3 +1,5 @@
+Hi! If you've landed here, you're interested in what I'm working on. This isn't a defined project, I'm just using this repo to play with Next.js and get more familiar with it as a framework. Feel free to follow my commits to see what I'm fiddling with. 
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
